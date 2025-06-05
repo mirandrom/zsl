@@ -1,0 +1,28 @@
+[project]
+name = "zsl"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "transformers==4.51.*",
+    "jupyter==1.1.*",
+    "matplotlib==3.10.*",
+    "ai2-olmo[train]",
+    "nanogpt",
+]
+
+[tool.uv.sources]
+ai2-olmo = { path = "pretraining/olmo", editable = true }
+nanogpt = { path = "pretraining/nanogpt", editable = true }
+
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["zsl_config"]
+
+[tool.setuptools.packages.find]
+include = ["zsl_utils"]
+

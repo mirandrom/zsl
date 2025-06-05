@@ -1,0 +1,15 @@
+[project]
+name = "nanogpt"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "transformers==4.51.*",
+    "datasets==3.6.*",
+    "tiktoken==0.9.*",
+    "wandb==0.19.*",
+]
+
+[tool.setuptools.packages.find]
+include = ["nanogpt"]
