@@ -1,123 +1,273 @@
-<html lang="en-GB">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zero-Sum Learning</title>
-    <meta name="description" content="Project page for ACL 2025 paper 'Training Dynamics Underlying Language Model Scaling Laws: Loss Deceleration & Zero-Sum Learning'.">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <meta name="robots" content="all">
+  <meta charset="utf-8">
+  <meta name="description" content="Project page for ACL 2025 paper 'Training Dynamics Underlying Language Model Scaling Laws: Loss Deceleration & Zero-Sum Learning'.">
+  <meta name="keywords" content="ZSL">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zero-Sum Learning</title>
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@your_twitter_id">
-    <meta name="twitter:description" content="Zero-Sum Learning">
-    <meta name="twitter:image:src" content="assets/figures/zsl_overview.png">
-    
-    <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
-    <link href="assets/fontawesome-free-6.6.0-web/css/all.min.css" rel="stylesheet">
-    <link href="assets/stylesheets/fa_fix.css" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
-    <script src="assets/scripts/navbar.js"></script>  <!-- Comment to remove table of content. -->
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            "HTML-CSS": {
-              scale: 95,
-              fonts: ["Gyre-Pagella"],
-              imageFont: null,
-              undefinedFamily: "'Arial Unicode MS', cmbright"
-            },
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                processEscapes: true
-              }
-          });
-    </script>
-    <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- TODO: come back to this -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
-
 <body>
-    <!-- Title Page -->
-    <!-- Dark Theme Example: Change the background colour dark and change the following div "blog-title" into "blog-title white". -->
-    <div class="container blog" id="first-content" style="background-color: #FFFF;">
-        <!-- If you don't have a project cover: Change "blog-title" into "blog-title no-cover"  -->
-        <div class="blog-title">
-            <div class="blog-intro">
-                <div>
-                    <h1 class="title">
-                        Training Dynamics Underlying Language Model Scaling Laws:<br>
-                        Loss Deceleration & Zero-Sum Learning
-                    </h1>
-                    <p class="author">
-                        Andrei Mircea <sup>1,2,3*</sup>,<br> 
-                        Supriyo Chakraborty <sup>3</sup>,
-                        Nima Chitsazan <sup>3</sup>,<br> 
-                        Irina Rish <sup>1,2</sup>,
-                        Ekaterina Lobacheva <sup>1,2</sup>
-                    </p>
-                    <p class="author" style="padding-top: 0px;">
-                        <sup>1</sup> Mila - Quebec AI Institute <br>
-                        <sup>2</sup> University of Montreal <br>
-                        <sup>3</sup> Capital One (* internship)<br>
-                    </p>
-                    <!-- Using FontAwesome Free -->
-                    <div class="info">
-                        <div>
-                            <a href="https://arxiv.org/abs/2506.05447" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)"> Paper <i class="fas fa-book-open"></i></a> &nbsp;&nbsp; 
-                            <a href="https://github.com/mirandrom/zsl" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)">Code <i class="fas fa-code"></i></a>  &nbsp;&nbsp; 
-                            <!-- <a href="https://huggingface.co/spaces" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)">Demo <i class="fa-light fa-face-smiling-hands"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-               
-                <div class="info">
-                    <p>ACL 2025 Oral</p>
-                </div>
-            </div>
 
-            <div class="blog-cover">
-                <img class="foreground" src="assets/figures/zsl_overview.png">
-                <img class="background" src="assets/figures/zsl_overview.png">
-            </div>
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
         </div>
+      </div>
     </div>
 
+  </div>
+</nav> -->
 
-    <div class="container blog main first" id="blog-main">
-        <p class="abstract">
-            This work aims to understand how scaling improves language models, specifically in terms of training dynamics. We find that language models undergo loss deceleration early in training; an abrupt slowdown in the rate of loss improvement, resulting in piecewise linear behaviour of the loss curve in log-log space. Scaling up the model mitigates this transition by (1) decreasing the loss at which deceleration occurs, and (2) improving the log-log rate of loss improvement after deceleration. We attribute loss deceleration to a type of degenerate training dynamics we term zero-sum learning (ZSL). In ZSL, per-example gradients become systematically opposed, leading to destructive interference in per-example changes in loss. As a result, improving loss on one subset of examples degrades it on another, bottlenecking overall progress. Loss deceleration and ZSL provide new insights into the training dynamics underlying language model scaling laws, and could potentially be targeted directly to improve language models independent of scale.
-        </p>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            Training Dynamics Underlying Language Model Scaling Laws:<br>
+            Loss Deceleration & Zero-Sum Learning  
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://mirandrom.github.io.com">
+                Andrei Mircea</a>
+                <sup>1,2,3*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=UIM7nGwAAAAJ&hl=en">
+                Supriyo Chakraborty</a>
+                <sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=WdvQxNEAAAAJ&hl=en">
+                Nima Chitsazan</a>
+                <sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.irina-rish.com/">
+                Irina Rish</a>
+                <sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://tipt0p.github.io/">
+                Ekaterina Lobacheva</a>
+                <sup>1,2</sup>
+            </span>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> Mila - Quebec AI Institute, </span>
+            <span class="author-block"><sup>2</sup> University of Montreal, </span>
+            <span class="author-block"><sup>3</sup> Capital One<sup>(*internship)</sup></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2506.05447"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.05447"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=0mOkgzk67Ng"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <br>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/mirandrom/zsl"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Wandb Link. -->
+              <span class="link-block">
+                <a href="https://wandb.ai/amr-amr/zsl/workspace"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-chart-line"></i>
+                  </span>
+                  <span>Wandb</span>
+                  </a>
+              </span>
+              <!-- Checkpoints Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/mirandrom/zsl-checkpoints"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-download"></i>
+                  </span>
+                  <span>Checkpoints</span>
+                  </a>
+              </span>
+                
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We find that language models undergo loss deceleration early in training; an abrupt slowdown in the rate of loss improvement, resulting in piecewise linear behaviour of the loss curve in log-log space. 
+            Scaling up the model mitigates this transition by (1) decreasing the loss at which deceleration occurs, and (2) improving the log-log rate of loss improvement after deceleration. 
+          </p>
+          <p>
+            We attribute loss deceleration to a type of degenerate training dynamics we term zero-sum learning (ZSL). 
+            In ZSL, per-example gradients become systematically opposed, leading to destructive interference in per-example changes in loss. 
+            As a result, improving loss on one subset of examples degrades it on another, bottlenecking overall progress. 
+          </p>
+          <p>
+            Loss deceleration and ZSL provide new insights into the training dynamics underlying language model scaling laws, and could potentially be targeted directly to improve language models independent of scale.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/0mOkgzk67Ng?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
 
 
-    <div class="container blog main">
-        <h1>Citation</h1>
-<pre><code class="plaintext">@article{mircea2025zsl,
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
     title={Training Dynamics Underlying Language Model Scaling Laws: Loss Deceleration and Zero-Sum Learning},
     author={Mircea, Andrei and Chakraborty, Supriyo and Chitsazan, Nima and Rish, Irina and Lobacheva, Ekaterina},
     journal={ACL},
     year={2025}
 }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a 
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+              Creative Commons Attribution-ShareAlike 4.0 International License
+            </a> 
+            and is adapted from 
+            <a href="https://github.com/nerfies/nerfies.github.io">
+              nerfies.github.io
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
+</footer>
 
-    <!-- Footer Page -->
-    <footer>
-        <div class="container">
-            <p>
-                This website is built on the <a href="https://shikun.io/projects/clarity">Clarity Template</a>, designed by <a href="https://shikun.io/">Shikun Liu</a>.
-            </p>
-        </div>    
-    </footer>
-    
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src="clarity/clarity.js"></script>    
-    <script src="assets/scripts/main.js"></script>    
-    </html>
 </body>
+</html>
