@@ -1,0 +1,13 @@
+i[class*="fa-"],
+.fa, .fas, .far, .fal, .fad, .fab,
+.fa-solid, .fa-regular, .fa-light, .fa-duotone, .fa-brands {
+    font-family: "Font Awesome 6 Free" !important;
+}
+
+/* Specific font weights for different styles */
+.fas, .fa-solid {
+    font-weight: 900 !important;
+}
+.far, .fa-regular {
+    font-weight: 400 !important;
+}
