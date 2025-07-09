@@ -3,20 +3,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clarity: A Minimalist Website Template for AI Research</title>
-    <meta name="description" content="We've presented Clarity, a minimalist and elegant website template for AI research.">
+    <title>Zero-Sum Learning</title>
+    <meta name="description" content="Project page for ACL 2025 paper 'Training Dynamics Underlying Language Model Scaling Laws: Loss Deceleration & Zero-Sum Learning'.">
     <meta name="referrer" content="no-referrer-when-downgrade">
     <meta name="robots" content="all">
-    <meta content="en_EN" property="og:locale">
-    <meta content="website" property="og:type">
-    <meta content="https://shikun.io/projects/clarity" property="og:url">
-    <meta content="Clarity" property="og:title">
-    <meta content="Website Template for AI Research" property="og:description">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@your_twitter_id">
-    <meta name="twitter:description" content="Clarity: A Minimalist Website Template for AI Research">
-    <meta name="twitter:image:src" content="assets/figures/clarity.png">
+    <meta name="twitter:description" content="Zero-Sum Learning">
+    <meta name="twitter:image:src" content="assets/figures/zsl_overview.png">
     
     <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
     <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
@@ -53,46 +48,41 @@
         <div class="blog-title">
             <div class="blog-intro">
                 <div>
-                    <h1 class="title">Clarity: A Minimalist Website Template for AI Research</h1>
+                    <h1 class="title">Training Dynamics Underlying Language Model Scaling Laws</h1>
+                    <h2>Loss Deceleration & Zero-Sum Learning</h2>
                     <p class="author">
-                        John Doe <sup>1</sup>, John Doe <sup>2</sup>, John Doe, John Doe, and John Doe
+                        Andrei Mircea <sup>1,2,3</sup>, 
+                        Supriyo Chakraborty <sup>3</sup>, 
+                        Nima Chitsazan <sup>3</sup>, 
+                        Irina Rish <sup>1,2</sup>,
+                        Ekaterina Lobacheva <sup>1,2</sup>
                     </p>
                     <p class="author" style="padding-top: 0px;">
-                        <sup>1</sup> University of Oxford <br>
-                        <sup>2</sup> Imperial College London
+                        <sup>1</sup> Mila - Quebec AI Institute <br>
+                        <sup>2</sup> University of Montreal <br>
+                        <sup>3</sup> Capital One <br>
                     </p>
                     <p class="abstract">
-                        Welcome to Clarity — an open-source, minimalist website template designed for presenting AI research. Originally developed as the foundation for my personal website, Clarity offers a modular, clean design that is easy to customise for simple, project-based website creation. With Clarity, you can effectively showcase your work, ensuring your research stands out in a visually appealing and professional manner. 
+                        This work aims to understand how scaling improves language models, specifically in terms of training dynamics. We find that language models undergo loss deceleration early in training; an abrupt slowdown in the rate of loss improvement, resulting in piecewise linear behaviour of the loss curve in log-log space. Scaling up the model mitigates this transition by (1) decreasing the loss at which deceleration occurs, and (2) improving the log-log rate of loss improvement after deceleration. We attribute loss deceleration to a type of degenerate training dynamics we term zero-sum learning (ZSL). In ZSL, per-example gradients become systematically opposed, leading to destructive interference in per-example changes in loss. As a result, improving loss on one subset of examples degrades it on another, bottlenecking overall progress. Loss deceleration and ZSL provide new insights into the training dynamics underlying language model scaling laws, and could potentially be targeted directly to improve language models independent of scale.
                     </p>
-                    <!-- Using FontAwesome Pro -->
-                    <!-- <div class="info">
-                        <div>
-                            <a href="https://arxiv.org" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)"> Paper <i class="far fa-book-open"></i></a> &nbsp;&nbsp; 
-                            <a href="https://github.com" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)">Code <i class="far fa-code"></i></a>  &nbsp;&nbsp; 
-                            <a href="https://www.microsoft.com/en-gb/microsoft-365/powerpoint" class="button icon" style="background-color: rgba(255, 255, 255, 0.3);">Slides <i class="far fa-presentation"></i></a>  &nbsp;&nbsp; 
-                            <a href="https://huggingface.co/spaces" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)">Demo <i class="fa-light fa-face-smiling-hands"></i></a>
-                        </div>
-                    </div> -->
-
                     <!-- Using FontAwesome Free -->
                     <div class="info">
                         <div>
-                            <a href="https://arxiv.org" class="button icon" style="background-color: rgba(255, 255, 255, 0.2)"> Paper <i class="fa-solid fa-book-open"></i></a> &nbsp;&nbsp; 
-                            <a href="https://github.com" class="button icon" style="background-color: rgba(255, 255, 255, 0.2)">Code <i class="fa-solid fa-code"></i></a>  &nbsp;&nbsp; 
-                            <a href="https://www.microsoft.com/en-gb/microsoft-365/powerpoint" class="button icon" style="background-color: rgba(255, 255, 255, 0.2);">Slides <i class="fa-regular fa-file-powerpoint"></i></a> &nbsp;&nbsp; 
-                            <a href="https://huggingface.co/spaces/" class="button icon" style="background-color: rgba(255, 255, 255, 0.2)">Demo <i class="fa-solid fa-laptop-code"></i></a> 
+                            <a href="https://arxiv.org/abs/2506.05447" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)"> Paper <i class="far fa-book-open"></i></a> &nbsp;&nbsp; 
+                            <a href="https://github.com/mirandrom/zsl" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)">Code <i class="far fa-code"></i></a>  &nbsp;&nbsp; 
+                            <!-- <a href="https://huggingface.co/spaces" class="button icon" style="background-color: rgba(255, 255, 255, 0.3)">Demo <i class="fa-light fa-face-smiling-hands"></i></a> -->
                         </div>
                     </div>
                 </div>
                
                 <div class="info">
-                    <p>CVPR 2048 / Best Paper Award</p>
+                    <p>ACL 2025 Oral</p>
                 </div>
             </div>
 
             <div class="blog-cover">
-                <img class="foreground" src="assets/figures/clarity.png">
-                <img class="background" src="assets/figures/clarity.png">
+                <img class="foreground" src="assets/figures/zsl_overview.png">
+                <img class="background" src="assets/figures/zsl_overview.png">
             </div>
         </div>
     </div>
