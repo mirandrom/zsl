@@ -51,9 +51,9 @@
                     <h1 class="title">Training Dynamics Underlying Language Model Scaling Laws</h1>
                     <h2>Loss Deceleration & Zero-Sum Learning</h2>
                     <p class="author">
-                        Andrei Mircea <sup>1,2,3</sup>, 
-                        Supriyo Chakraborty <sup>3</sup>, 
-                        Nima Chitsazan <sup>3</sup>, 
+                        Andrei Mircea <sup>1,2,3</sup>,<br> 
+                        Supriyo Chakraborty <sup>3</sup>,
+                        Nima Chitsazan <sup>3</sup>,<br> 
                         Irina Rish <sup>1,2</sup>,
                         Ekaterina Lobacheva <sup>1,2</sup>
                     </p>
@@ -61,9 +61,6 @@
                         <sup>1</sup> Mila - Quebec AI Institute <br>
                         <sup>2</sup> University of Montreal <br>
                         <sup>3</sup> Capital One <br>
-                    </p>
-                    <p class="abstract">
-                        This work aims to understand how scaling improves language models, specifically in terms of training dynamics. We find that language models undergo loss deceleration early in training; an abrupt slowdown in the rate of loss improvement, resulting in piecewise linear behaviour of the loss curve in log-log space. Scaling up the model mitigates this transition by (1) decreasing the loss at which deceleration occurs, and (2) improving the log-log rate of loss improvement after deceleration. We attribute loss deceleration to a type of degenerate training dynamics we term zero-sum learning (ZSL). In ZSL, per-example gradients become systematically opposed, leading to destructive interference in per-example changes in loss. As a result, improving loss on one subset of examples degrades it on another, bottlenecking overall progress. Loss deceleration and ZSL provide new insights into the training dynamics underlying language model scaling laws, and could potentially be targeted directly to improve language models independent of scale.
                     </p>
                     <!-- Using FontAwesome Free -->
                     <div class="info">
@@ -89,123 +86,11 @@
 
 
     <div class="container blog main first" id="blog-main">
-        <h1 >
-            Introduction
-        </h1>
-        <p class='text'>
-            Lorem ipsum odor amet, consectetuer adipiscing elit. Urna non ligula sed ante ultricies. Nam nam tortor elit turpis fermentum praesent. Tristique porttitor sodales rhoncus duis tellus mus vivamus lacus. Nam platea lectus aliquam placerat; quis dignissim nisi ornare. Habitant himenaeos adipiscing dictum fringilla metus.
-        </p>
-
-        <p class="text">
-            Sagittis donec nibh etiam leo eget iaculis proin. Dapibus morbi vitae ad vestibulum montes odio varius. Ullamcorper finibus nibh suscipit libero velit suspendisse. Potenti potenti risus integer libero semper potenti vivamus. Libero cras lectus netus faucibus nisl. Congue aliquet congue ante netus eu, vestibulum arcu. Scelerisque tempor taciti senectus mus penatibus condimentum consequat in. Tempor conubia molestie tristique; orci taciti augue. Justo ultrices consequat hac vivamus proin sodales.
+        <p class="abstract">
+            This work aims to understand how scaling improves language models, specifically in terms of training dynamics. We find that language models undergo loss deceleration early in training; an abrupt slowdown in the rate of loss improvement, resulting in piecewise linear behaviour of the loss curve in log-log space. Scaling up the model mitigates this transition by (1) decreasing the loss at which deceleration occurs, and (2) improving the log-log rate of loss improvement after deceleration. We attribute loss deceleration to a type of degenerate training dynamics we term zero-sum learning (ZSL). In ZSL, per-example gradients become systematically opposed, leading to destructive interference in per-example changes in loss. As a result, improving loss on one subset of examples degrades it on another, bottlenecking overall progress. Loss deceleration and ZSL provide new insights into the training dynamics underlying language model scaling laws, and could potentially be targeted directly to improve language models independent of scale.
         </p>
     </div>
 
-    <div class="container blog main gray">
-        <img src="clarity/images/vit.png">
-        <p class="caption">
-            Erat id non venenatis nullam leo nisl risus fames. Quis montes tortor aenean posuere non. Maximus dui cras enim tristique; ipsum pellentesque ut. Mauris hac felis elit scelerisque nascetur risus adipiscing ultrices. Quis augue pulvinar laoreet facilisis vel. Pharetra blandit nunc id, sem cubilia sit porttitor. Montes hendrerit vestibulum vulputate tincidunt facilisis metus. Interdum mi vivamus nunc consectetur adipiscing; aptent semper dictum.
-        </p>
-    </div>
-
-    <div class="container blog main">
-        <h1>Results</h1>
-        <p class="text">
-            Arcu imperdiet nunc, dignissim ornare arcu nam eros cras venenatis. Non volutpat parturient luctus eros litora natoque; elementum dui. Nulla cubilia et nascetur dictum nisi phasellus. Natoque himenaeos porta vulputate interdum id mollis. Fames diam integer semper ligula per. Sapien ex magnis pellentesque neque rhoncus conubia. Purus torquent nunc ligula auctor cras pharetra. Porttitor vulputate dis ante suspendisse a iaculis massa sagittis.
-        </p>
-    </div>
-
-    <div class="container blog extra-large gray">
-        <div class="slide-menu">
-            <ul class="dots" id="slide-menu">
-                <li class="dot active"></li>
-                <li class="dot"></li>
-                <li class="dot"></li>
-            </ul>
-        </div>
-       
-        <div class="slide-content", style="display: block;">
-            <div class="columns-4">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-            </div>
-            <p class="caption">
-                Nulla quis porttitor varius phasellus dolor curae primis. Suscipit sit adipiscing nibh justo hac. Turpis massa ridiculus sit, finibus quis litora sagittis torquent. Dignissim suscipit quam curabitur sit velit, rhoncus tincidunt purus? At netus efficitur penatibus purus amet urna etiam. Leo neque ligula varius lacinia torquent vehicula. Tempus non mauris vel placerat natoque.
-            </p>
-        </div>
-
-        <div class="slide-content", style="display: none;">
-            <div class="columns-6">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-            </div>
-            <p class="caption">
-                Nulla quis porttitor varius phasellus dolor curae primis. Suscipit sit adipiscing nibh justo hac. Turpis massa ridiculus sit, finibus quis litora sagittis torquent. Dignissim suscipit quam curabitur sit velit, rhoncus tincidunt purus? At netus efficitur penatibus purus amet urna etiam. Leo neque ligula varius lacinia torquent vehicula. Tempus non mauris vel placerat natoque.
-            </p>
-        </div>
-
-        <div class="slide-content", style="display: none;">
-            <div class="columns-8">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-            </div>
-            <p class="caption">
-                Nulla quis porttitor varius phasellus dolor curae primis. Suscipit sit adipiscing nibh justo hac. Turpis massa ridiculus sit, finibus quis litora sagittis torquent. Dignissim suscipit quam curabitur sit velit, rhoncus tincidunt purus? At netus efficitur penatibus purus amet urna etiam. Leo neque ligula varius lacinia torquent vehicula. Tempus non mauris vel placerat natoque.
-            </p>
-        </div>
-    </div>
-
-    <div class="container blog main">
-        <h1>Additional Analysis</h1>
-        <h2>Observation 1</h2>
-        <p class="text">
-            Lorem ipsum odor amet, consectetuer adipiscing elit. Himenaeos sociosqu facilisi ante; cubilia sociosqu magna libero. Dignissim vehicula felis taciti sollicitudin quam ligula a, vivamus porta. Tellus facilisi pharetra non posuere a sapien. Sagittis felis lectus ac interdum pretium sit himenaeos.
-        </p>
-        <ol>
-            <li>
-                <p class="text">Conubia aliquet semper inceptos ultricies vel metus fusce litora. </p>
-            </li>
-            <li>
-                <p class="text">Ultricies dis vehicula non lobortis hac sagittis urna dignissim ex. 
-                </p>
-            </li>
-        </ol>
-
-        <h2>Observation 2</h2>
-        <p class="text">
-            Lorem ipsum odor amet, consectetuer adipiscing elit. Himenaeos sociosqu facilisi ante; cubilia sociosqu magna libero. Dignissim vehicula felis taciti sollicitudin quam ligula a, vivamus porta. Tellus facilisi pharetra non posuere a sapien. Sagittis felis lectus ac interdum pretium sit himenaeos.
-        </p>
-
-        <ul >
-            <li>
-                <p class="text">Conubia aliquet semper inceptos ultricies vel metus fusce litora. </p>
-            </li>
-            <li>
-                <p class="text">Ultricies dis vehicula non lobortis hac sagittis urna dignissim ex. 
-                </p>
-            </li>
-        </ul>
-    </div>
-
-
-    <div class="container blog main">
-        <h1>Conclusion</h1>
-        <p class="text">
-            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod sociosqu.
-        </p>
-    </div>
 
     <div class="container blog main">
         <h1>Citation</h1>
