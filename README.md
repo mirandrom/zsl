@@ -57,7 +57,7 @@ for filename in ['model.pt', 'optim.pt', 'train.pt', 'config.yaml']:
 To download everything, you can run `reproducibility/download_checkpoints.ipynb`.
 
 ### Download eval data for analyses
-We use the `val` split of `c4_en` from `allenai/paloma` (link).  
+We use the `val` split of `c4_en` from `allenai/paloma`.  
 You will need to accept their T&C [here](https://huggingface.co/datasets/allenai/paloma) to get a token.  
 Add your token to and run `reproducibility/download_c4_en_val.ipynb` to download & tokenize the data.  
 The tokenized data will be cached in the right path for reproducing our analyses (`ZSL_DIR_DATA` in `zsl_config.py`).
