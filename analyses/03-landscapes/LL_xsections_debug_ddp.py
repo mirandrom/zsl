@@ -9,19 +9,19 @@ import torch.nn.functional as F
 import torch.distributed as dist
 
 from zsl_config import ZSL_DIR_ANALYSIS
+from zsl_utils.grad_analysis.convert import convert_olmo_model
+from zsl_utils.grad_analysis.reduce import reduce_metrics_olmo
 from zsl_utils.olmo import (
     get_olmo_model_steps,
+    get_olmo_device_bsz,
     load_olmo_model,
     load_olmo_optimizer,
 )
-from zsl_utils.load_data import get_olmo_train_batch
+from zsl_utils.load_data import get_olmo_train_batch, get_eval_dataloader
 
 
 MODEL_CLASS = "olmo"
-# ANALYSIS_NAME = "LL_xsections_true_step"
-# NOTE: moved loss.backward outside of amp ctx to see if fixes discrepancies in loss changes > 0
-#       also do step updates in fp32
-ANALYSIS_NAME = "LL_xsections_true_step"
+ANALYSIS_NAME = "LL_xsections_debug_ddp"
 OUT_DIR = ZSL_DIR_ANALYSIS / f"{ANALYSIS_NAME}/{MODEL_CLASS}"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -29,16 +29,15 @@ RUNS = [
     "1028-rmsnorm-14m",
     "1028-rmsnorm-37m",
     "1028-rmsnorm-78m",
-    "1028-rmsnorm-144m",
-    "1028-rmsnorm-285m",
-    "1028-rmsnorm-472m",
+    # "1028-rmsnorm-144m",
+    # "1028-rmsnorm-285m",
+    # "1028-rmsnorm-472m",
 ]
-OVERWRITE = True
+OVERWRITE = False
  
 DEVICE_NAME = torch.cuda.get_device_name()
 BASE_MICROBSZ = {
-    'NVIDIA L40S': 96,
-    'NVIDIA A100-SXM4-80GB': 128,
+    'NVIDIA A100-SXM4-80GB': 96,
 }
 MICROBSZS = {
     "1028-rmsnorm-14m"  : int(7/8*BASE_MICROBSZ[DEVICE_NAME]),
@@ -48,6 +47,7 @@ MICROBSZS = {
     "1028-rmsnorm-285m" : int(3/8*BASE_MICROBSZ[DEVICE_NAME]),
     "1028-rmsnorm-472m" : int(2/8*BASE_MICROBSZ[DEVICE_NAME]),
 }
+
 
 def analysis_loop(run, step, train_bbatch, eval_bbatch, train_batch_step, eval_batch_step, microbsz, device, verbose: bool = False):
     # 1. load model and optimizer
@@ -92,11 +92,7 @@ def analysis_loop(run, step, train_bbatch, eval_bbatch, train_batch_step, eval_b
     #---------------------------------------------------------------------------
     # 1. load model and optimizer
     #---------------------------------------------------------------------------'
-    print(f"[{datetime.now()}][run={run}][step={step}] Loading model", end='\n')
     model = load_olmo_model(run, step, device=device)
-    model = model.to(torch.bfloat16)
-    print(f"[{datetime.now()}][run={run}][step={step}] Model loaded", end='\n')
-
     optimizer = load_olmo_optimizer(model, run, step, device=device)
     optimizer.zero_grad()
 
@@ -134,7 +130,6 @@ def analysis_loop(run, step, train_bbatch, eval_bbatch, train_batch_step, eval_b
     # 1. compute optimizer step
     #---------------------------------------------------------------------------
     if verbose: print(f"[{datetime.now()}][run={run}][step={step}] Computing optimizer step", end='\r')
-
     init_W = {n: p.data.detach().cpu() for n, p in model.named_parameters()}
     delta_W = {}
 
@@ -146,7 +141,7 @@ def analysis_loop(run, step, train_bbatch, eval_bbatch, train_batch_step, eval_b
         with amp_ctx:
             logits = model(input_ids).logits.flatten(0, 1)
             loss = F.cross_entropy(logits, labels, reduction="sum") / num_tokens
-            loss.backward()
+        loss.backward()
         del logits, loss
     optimizer.step()
 
@@ -163,7 +158,7 @@ def analysis_loop(run, step, train_bbatch, eval_bbatch, train_batch_step, eval_b
     #---------------------------------------------------------------------------
     # 2. Compute loss landscapes along update
     #---------------------------------------------------------------------------
-    STEP_SIZES = [x/25 for x in range(1,50)] 
+    STEP_SIZES = [x/5 for x in range(1,10)] 
     STEP_SIZES = [-x for x in reversed(STEP_SIZES)] + [0] + STEP_SIZES
     model.eval()
     with inf_ctx:
